@@ -19,7 +19,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
+            overflow-y: scroll;
+            padding-right: 10px; /* Space for the scrollbar */
         }
 
         .container {
@@ -248,6 +249,27 @@
             top: 10px;
             right: 10px;
         }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1A1A1A;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.5), rgba(255, 204, 0, 0.5));
+            border-radius: 10px;
+            border: 2px solid #1A1A1A;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(255, 102, 0, 0.8), rgba(255, 204, 0, 0.8));
+        }
+
     </style>
 </head>
 <body>
@@ -257,10 +279,10 @@
     <div class="shape shape2"></div>
 
     <h1>Spectrax Lab</h1>
-    <p>Your Ultimate Gateway to Cybersecurity Excellence.</p>
+    <p>Your Ultimate Gateway to ethical hacking Excellence.</p>
     
     <h2>Download the SpectraxLab App</h2>
-    <p>Join a revolutionary community. Download now and empower your cybersecurity skills! <br>Terms and conditions apply.</p>
+    <p>Download our app to purchase our hacking services at the best prices! <br>Terms and conditions apply.</p>
     
     <a class="button" href="#" onclick="openPopup()">Get Started</a>
 </div>
@@ -268,45 +290,24 @@
 <!-- Consent Popup -->
 <div id="popup" class="popup">
     <div class="popup-content">
-        <h3>Important Legal Information</h3>
-        <p>By proceeding with the download, you acknowledge and agree to the following terms:</p>
+        <h3>ACCEPTENCE</h3>
+        <p>By entering your email, you acknowledge and agree to all the following terms:</p>
         <ul>
             <li><strong>Compliance with Laws:</strong> You agree to use this app solely in compliance with the laws of Qatar, including but not limited to laws regarding ethical hacking, privacy, and data protection. Any unlawful use of this app is prohibited, and you bear full responsibility for your actions.</li>
             <li><strong>Ethical Use:</strong> This app is intended exclusively for educational purposes in ethical hacking and OSINT (Open-Source Intelligence) research. Any malicious use, including unauthorized access to systems, data theft, or cyberattacks, is strictly prohibited and could result in legal action.</li>
             <li><strong>No Refunds Policy:</strong> All payments for the app are final. We do not offer refunds. Payments are processed via Square through Jotform, and all transactions are subject to their respective terms and conditions.</li>
-            <li><strong>Liability Disclaimer:</strong> Spectrax Lab and its developers will not be held liable for any damages, loss of data, or legal consequences resulting from the use or misuse of this app. By proceeding with the download, you release Spectrax Lab and its affiliates from any and all liability.</li>
-            <li><strong>Data Collection:</strong> The app may collect certain personal data as part of its normal operations. This data will be processed in accordance with our Privacy Policy, and you consent to the collection and usage of your personal data for the purpose of improving app functionality.</li>
-            <li><strong>Intellectual Property:</strong> All intellectual property rights, including but not limited to copyrights, trademarks, and patents, related to the Spectrax Lab app are owned by the developers. Unauthorized use, reproduction, or distribution of the app or its content is prohibited.</li>
+            <li><strong>Liability Disclaimer:</strong> Spectrax Lab and its owners, developers, and affiliates are not liable for any damages, losses, or consequences arising from the use or misuse of this app. By downloading and using the app, you acknowledge and accept these risks.</li>
+            <li><strong>Terms of Service:</strong> Do you accept all of our Terms of Service?</li>
+            <li><strong>Liability Waiver:</strong> Do you agree to not hold Spectrax Lab owners liable for anything related to the use of this app?</li>
         </ul>
-
-        <form id="termsForm" onsubmit="submitForm(event)">
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" name="fullName" required>
-
-            <label for="email">Email Address:</label>
+        <form onsubmit="openNewTab(); return false;">
+            <label for="email">Enter your email address to proceed (By entering you agree to ALL our terms):</label>
             <input type="email" id="email" name="email" required>
-
-            <label for="reason">Reason for Downloading:</label>
-            <input type="text" id="reason" name="reason" required>
-
-            <div class="checkbox-group">
-                <label>
-                    <input type="checkbox" name="terms" required> I agree to the Terms of Service.
-                </label>
-                <label>
-                    <input type="checkbox" name="liability" required> I agree that SpectraxLab is not liable for misuse.
-                </label>
-                <label>
-                    <input type="checkbox" name="legal" required> I understand everything is in compliance with the law.
-                </label>
-            </div>
-
-            <button type="submit" class="button">Agree and Download</button>
+            <button type="submit">Proceed</button>
             <button type="button" class="cancel-btn" onclick="closePopup()">Cancel</button>
         </form>
-
-        <button class="close-btn" onclick="closePopup()">Close</button>
     </div>
+    <button class="close-btn" onclick="closePopup()">X</button>
 </div>
 
 <script>
@@ -318,8 +319,7 @@
         document.getElementById('popup').style.display = 'none';
     }
 
-    function submitForm(event) {
-        event.preventDefault();
+    function openNewTab() {
         window.open('https://eu.jotform.com/app/243541679203356', '_blank');
         closePopup();
     }
@@ -327,3 +327,5 @@
 
 </body>
 </html>
+
+
