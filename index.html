@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrax Lab Download</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at bottom right, #0D0D0D, #1A1A1A);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(36, 36, 36, 0.9), rgba(10, 10, 10, 0.8));
+            position: relative;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #FFCC00;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #FF6600;
+            text-align: center;
+            margin: 20px 0;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background: #FFCC00;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            background: linear-gradient(90deg, #FF6600, #FFCC00);
+            border: none;
+            border-radius: 30px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .button:hover:before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Additional Animation */
+        .container {
+            animation: bounceIn 1s ease;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(200%);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(-30%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Background shapes for extra flair */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .shape1 {
+            background: rgba(255, 102, 0, 0.2);
+            width: 300px;
+            height: 300px;
+            left: -100px;
+            top: -100px;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .shape2 {
+            background: rgba(255, 204, 0, 0.3);
+            width: 200px;
+            height: 200px;
+            right: -80px;
+            bottom: -80px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background: #222222;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            color: #FFFFFF;
+            text-align: left;
+        }
+
+        .popup h3 {
+            font-size: 2.5rem;
+            color: #FFCC00;
+            margin-bottom: 20px;
+        }
+
+        .popup ul {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+
+        .popup ul li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .popup form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .popup input {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+
+        .popup button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg, #FF6600, #FFCC00);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .popup .cancel-btn {
+            background-color: #B50000;
+        }
+
+        .popup .cancel-btn:hover {
+            background-color: #900;
+        }
+
+        .popup .close-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+
+    <h1>Spectrax Lab</h1>
+    <p>Your Ultimate Gateway to Cybersecurity Excellence.</p>
+    
+    <h2>Download the SpectraxLab App</h2>
+    <p>Join a revolutionary community. Download now and empower your cybersecurity skills! <br>Terms and conditions apply.</p>
+    
+    <a class="button" href="#" onclick="openPopup()">Get Started</a>
+</div>
+
+<!-- Consent Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <h3>Important Legal Information</h3>
+        <p>By proceeding with the download, you acknowledge and agree to the following terms:</p>
+        <ul>
+            <li><strong>Compliance with Laws:</strong> You agree to use this app solely in compliance with the laws of Qatar, including but not limited to laws regarding ethical hacking, privacy, and data protection. Any unlawful use of this app is prohibited, and you bear full responsibility for your actions.</li>
+            <li><strong>Ethical Use:</strong> This app is intended exclusively for educational purposes in ethical hacking and OSINT (Open-Source Intelligence) research. Any malicious use, including unauthorized access to systems, data theft, or cyberattacks, is strictly prohibited and could result in legal action.</li>
+            <li><strong>No Refunds Policy:</strong> All payments for the app are final. We do not offer refunds. Payments are processed via Square through Jotform, and all transactions are subject to their respective terms and conditions.</li>
+            <li><strong>Liability Disclaimer:</strong> Spectrax Lab and its developers will not be held liable for any damages, loss of data, or legal consequences resulting from the use or misuse of this app. By proceeding with the download, you release Spectrax Lab and its affiliates from any and all liability.</li>
+            <li><strong>Data Collection:</strong> The app may collect certain personal data as part of its normal operations. This data will be processed in accordance with our Privacy Policy, and you consent to the collection and usage of your personal data for the purpose of improving app functionality.</li>
+            <li><strong>Intellectual Property:</strong> All intellectual property rights, including but not limited to copyrights, trademarks, and patents, related to the Spectrax Lab app are owned by the developers. Unauthorized use, reproduction, or distribution of the app or its content is prohibited.</li>
+        </ul>
+
+        <form id="termsForm" onsubmit="submitForm(event)">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="reason">Reason for Downloading:</label>
+            <input type="text" id="reason" name="reason" required>
+
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="terms" required> I agree to the Terms of Service.
+                </label>
+                <label>
+                    <input type="checkbox" name="liability" required> I agree that SpectraxLab is not liable for misuse.
+                </label>
+                <label>
+                    <input type="checkbox" name="legal" required> I understand everything is in compliance with the law.
+                </label>
+            </div>
+
+            <button type="submit" class="button">Agree and Download</button>
+            <button type="button" class="cancel-btn" onclick="closePopup()">Cancel</button>
+        </form>
+
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<script>
+    function openPopup() {
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        window.open('https://eu.jotform.com/app/243541679203356', '_blank');
+        closePopup();
+    }
+</script>
+
+</body>
+</html>
